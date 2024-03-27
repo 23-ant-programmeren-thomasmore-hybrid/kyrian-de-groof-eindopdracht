@@ -9,7 +9,7 @@ export default function Home() {
             <a>
                 <Image
                 src="/TARON.jpg"
-                alt="Creator"
+                alt="Index"
                 width={300}
                 height={300}
                 />
