@@ -31,3 +31,9 @@ body {
     text-wrap: balance;
   }
 }
+
+/* ul/li elements need inline-block to balance text */
+ul, li {
+  display: inline-block;
+  margin: 5px;
+}

@@ -24,3 +24,11 @@
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }
+
+
+/*
+KV_URL:redis://default:877ea2996e08412e8be82b3a6c6fac44@included-tetra-46686.upstash.io:46686
+KV_REST_API_URL:https://included-tetra-46686.upstash.io
+KV_REST_API_TOKEN:AbZeASQgY2MxMDQwMzEtODY0Mi00NzVjLWIwZWMtOWRjNzYyODI3ODA0ODc3ZWEyOTk2ZTA4NDEyZThiZTgyYjNhNmM2ZmFjNDQ=
+KV_REST_API_READ_ONLY_TOKEN:ArZeASQgY2MxMDQwMzEtODY0Mi00NzVjLWIwZWMtOWRjNzYyODI3ODA0oRfafEozrzTIzlcQt8u1f53Z_g_pEQSjaH13vD6A6Wg=
+*/
