@@ -8,7 +8,7 @@ export default function RootLayout({children,}: Readonly<{ children: React.React
     return (
         <html>
             <header>
-                <nav>
+                <nav className="text-amber-50">
                     <ul className="text-3xl">
                         <li>
                             <Link href="/">Home</Link>
