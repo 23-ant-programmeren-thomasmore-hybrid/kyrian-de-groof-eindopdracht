@@ -14,7 +14,7 @@ export default async function Home() {
     );
 }
 
-export async function save() {
+async function save() {
     try {
         const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL || 'http://localhost:3000';
         const response = await fetch(`${baseUrl}/api/characterfetch`);
