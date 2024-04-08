@@ -1,5 +1,6 @@
 import {kv} from "@vercel/kv";
 import fs from "fs";
+import path from "path";
 
 export default async function handler(req, res) {
     process.env.KV_REST_API_URL = "https://included-tetra-46686.upstash.io";
@@ -10,7 +11,7 @@ export default async function handler(req, res) {
             const characters = await kv.lrange("character", 0, -1);
 
             // Write characters.json data to a file
-            fs.writeFile('src/data/characters.json', JSON.stringify(characters), (err) => {
+            fs.writeFile(path.join('/tmp', 'characters.json'), JSON.stringify(characters), (err) => {
                 if (err) {
                     console.error('Error writing characters data:', err);
                     res.status(500).json({ error: 'Error writing characters data' });

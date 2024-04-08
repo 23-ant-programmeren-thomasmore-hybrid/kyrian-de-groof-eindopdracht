@@ -31,7 +31,7 @@ export default async function handler(req, res) {
                     backstory: char.split('~')[12]
                 }
             });
-            fs.writeFile(CHAR_PATH, JSON.stringify(charactersObj), (err) => {
+            fs.writeFile(path.join('/tmp','characters.json'), JSON.stringify(charactersObj), (err) => {
                 if (err) {
                     console.error('Error writing characters data:', err);
                     res.status(500).json({ error: 'Error writing characters data' });
