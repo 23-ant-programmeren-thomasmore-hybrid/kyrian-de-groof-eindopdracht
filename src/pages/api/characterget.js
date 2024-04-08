@@ -30,6 +30,7 @@ export default async function handler(req, res) {
             });
             fs.writeFile(path.join('/tmp','characters.json'), JSON.stringify(charactersObj), (err) => {
                 if (err) {
+                    console.log('Error fetching characters:', err);
                     console.error('Error writing characters data:', err);
                     res.status(500).json({ error: 'Error writing characters data' });
                 } else {
@@ -38,7 +39,7 @@ export default async function handler(req, res) {
             });
         }
         catch (error) {
-            console.log('Error fetching characters:', error);
+
             console.error('Error fetching characters:', error);
             res.status(500).json({ error: 'Error fetching characters' });
         }
