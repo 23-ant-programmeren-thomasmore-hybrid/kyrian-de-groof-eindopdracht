@@ -1,15 +1,17 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {useAuth} from "@/context/AuthContext";
-import {router} from "next/client";
+import {useRouter} from "next/router";
+
 
 export default function Logout() {
     const [loggedInUser, setLoggedInUser] = useState(null);
     const {logout} = useAuth();
+    const router = useRouter();
 
     const handleLogout = async () => {
         setLoggedInUser(null);
         logout();
-        await router.push('/api/login');
+        await fetch('/api/auth/logout');
     }
 
     return (

@@ -1,6 +1,12 @@
+import path from "path";
+import fs from "fs";
+
+const LOGGEDINUSER = path.resolve('./src/data/loggedInUser.json');
+
 export default async function handler(req, res) {
     if (req.method === 'POST') {
         try {
+            fs.writeFileSync(LOGGEDINUSER, '');
             res.status(200).json({ message: 'Logout successful' });
         }
         catch (error) {

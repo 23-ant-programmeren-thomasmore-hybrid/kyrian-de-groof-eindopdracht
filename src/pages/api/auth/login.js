@@ -3,6 +3,7 @@ import fs from "fs";
 import bcrypt from "bcrypt";
 
 const USERS_FILE_PATH = path.resolve('./src/data/data.json');
+const LOGGEDINUSER = path.resolve('./src/data/loggedInUser.json')
 
 export default async function handler(req, res) {
     if (req.method === 'POST') { // Change method to POST
@@ -44,7 +45,14 @@ export default async function handler(req, res) {
 
             // Respond with the user data
             res.status(200).json(userObj);
-            localStorage.setItem('user', JSON.stringify(userObj));
+            fs.writeFile(LOGGEDINUSER, JSON.stringify(userObj), (err) => {
+                if (err) {
+                    console.error('Error writing users data:', err);
+                    res.status(500).json({ error: 'Error writing users data' });
+                } else {
+                    console.log('Users data written successfully');
+                }
+            });
         } catch (error) {
             console.error('Error fetching users:', error);
             res.status(500).json({ error: 'Error fetching users' });

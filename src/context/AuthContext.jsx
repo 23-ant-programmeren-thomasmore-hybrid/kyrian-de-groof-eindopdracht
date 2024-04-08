@@ -1,8 +1,9 @@
 // AuthContext.jsx
-import React, { createContext, useState, useContext } from 'react';
+"use client";
+import React, {createContext, useContext, useState} from 'react';
 
 export const AuthContext = createContext({
-    isLoggedIn: false,
+    isLoggedIn: true,
     login: () => {},
     logout: () => {}
 });

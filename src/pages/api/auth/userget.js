@@ -1,5 +1,3 @@
-// pages/api/users.js
-
 import fs from 'fs';
 import { kv } from '@vercel/kv';
 

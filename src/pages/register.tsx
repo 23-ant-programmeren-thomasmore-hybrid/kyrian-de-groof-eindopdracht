@@ -25,7 +25,7 @@ export default function Index() {
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         try {
-            const response = await fetch('/api/userpush', {
+            const response = await fetch('/api/auth/userpush', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ export default function Index() {
     return (
         <main className="flex min-h-screen items-center justify-center bg-gray-100">
             <div className="max-w-md w-full bg-white rounded-lg shadow-md p-8">
-                <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
+                <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4 text-black">
                     <input type="hidden" name="userId" value={0}/>
                     <div>
                         <label className="block mb-2">

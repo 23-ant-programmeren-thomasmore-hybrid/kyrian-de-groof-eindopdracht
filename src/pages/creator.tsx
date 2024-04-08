@@ -38,8 +38,8 @@ export default function Creator() {
                 body: JSON.stringify(formData),
             });
             if (response.ok) {
+                await router.push('/');
                 console.log('Form submitted successfully');
-                router.push('/');
             } else {
                 console.error('Error submitting form data:', response.statusText);
             }
@@ -51,7 +51,7 @@ export default function Creator() {
     return (
         <main className="flex min-h-screen items-center justify-center bg-black">
             <div className="max-w-md w-full bg-white rounded-lg shadow-md p-8">
-                <form onSubmit={handleSubmit} className="w-full">
+                <form onSubmit={handleSubmit} className="w-full text-black">
                     <input type="hidden" name="userId" value={0}/>
                     <div className="mb-4">
                         <label className="block mb-2">
@@ -85,7 +85,7 @@ export default function Creator() {
                         <label className="block mb-2">
                             Age
                             <input
-                                type="text"
+                                type="number"
                                 name="age"
                                 value={formData.age}
                                 onChange={handleChange}

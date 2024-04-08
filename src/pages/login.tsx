@@ -2,8 +2,10 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { useAuth } from "@/context/AuthContext";
 
+
 export default function Login() {
     const {login} = useAuth();
+
     const router = useRouter();
     const [formData, setFormData] = useState({
         username: '',
@@ -23,7 +25,7 @@ export default function Login() {
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         try {
-            const response = await fetch('/api/login', {
+            const response = await fetch('/api/auth/login', {
                 method: 'POST', // Change method to POST
                 headers: {
                     'Content-Type': 'application/json',
