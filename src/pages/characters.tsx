@@ -4,13 +4,14 @@ export default function Characters() {
     const [userData, setUserData] = useState(null);
 
     useEffect(() => {
-        load();
+        load().then(r => console.log('Loaded character data'));
+        save().then(r => console.log('Saved character data'));
     }, []);
 
     async function load() {
         try {
             const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL || 'http://localhost:3000';
-            const response = await fetch(`http://localhost:3000/api/characterfetch`);
+            const response = await fetch(`/api/characterfetch`);
             if (response.ok) {
                 const data = await response.json();
                 setUserData(data);
@@ -18,6 +19,21 @@ export default function Characters() {
                 console.error('Failed to fetch character data:', response.statusText);
             }
         } catch (error) {
+            console.error('Error fetching character data:', error);
+        }
+    }
+
+    async function save() {
+        try {
+            const response = await fetch('/api/characterget');
+            if (response.ok) {
+                const data = await response.json();
+                setUserData(data);
+            } else {
+                console.error('Failed to fetch character data:', response.statusText);
+            }
+        }
+        catch (error) {
             console.error('Error fetching character data:', error);
         }
     }
