@@ -4,14 +4,14 @@ export default function Characters() {
     const [userData, setUserData] = useState(null);
 
     useEffect(() => {
-        load().then(r => console.log('Loaded character data'));
-        save().then(r => console.log('Saved character data'));
+        load().then(() => console.log('Loaded character data'));
+        save().then(() => console.log('Saved character data'));
     }, []);
 
     async function load() {
         try {
             const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL || 'http://localhost:3000';
-            const response = await fetch(`/api/characterfetch`);
+            const response = await fetch(`${baseUrl}/api/characterfetch`);
             if (response.ok) {
                 const data = await response.json();
                 setUserData(data);
