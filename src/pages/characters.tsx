@@ -43,8 +43,8 @@ export default function Characters() {
                 <h1 className="text-3xl font-bold text-gray-800">Characters</h1>
                 {/* Render the user data here */}
                 {userData && (
-                    <div>
-                        hallo
+                    <div className="text-black">
+                        <p>{userData}</p>
                     </div>
                 )}
             </div>
