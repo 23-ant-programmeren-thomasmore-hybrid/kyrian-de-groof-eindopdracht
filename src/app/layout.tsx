@@ -6,8 +6,7 @@ import Link from "next/link";
 
 export default function RootLayout({children,}: Readonly<{ children: React.ReactNode; }>) {
     return (
-        <>
-
+        <html>
             <header>
                 <nav>
                     <ul className="text-3xl">
@@ -21,8 +20,6 @@ export default function RootLayout({children,}: Readonly<{ children: React.React
                 </nav>
             </header>
             <main>{children}</main>
-
-        </>
-
+        </html>
     );
 }
