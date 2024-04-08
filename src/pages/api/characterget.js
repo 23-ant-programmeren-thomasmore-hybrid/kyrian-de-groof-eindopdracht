@@ -1,12 +1,10 @@
 import path from "path";
 import fs from "fs";
 
-const CHAR_PATH = path.resolve('./src/data/characters.json');
-
 export default async function handler(req, res) {
     if (req.method === 'GET') {
         try {
-            const jsonData = fs.readFileSync(CHAR_PATH, 'utf8');
+            const jsonData = fs.readFileSync(path.join('/tmp','characters.json'), 'utf8');
             const characters = JSON.parse(jsonData);
 
             if (!characters) {

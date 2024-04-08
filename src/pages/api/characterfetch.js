@@ -3,8 +3,6 @@ import fs from "fs";
 import path from "path";
 
 export default async function handler(req, res) {
-    process.env.KV_REST_API_URL = "https://included-tetra-46686.upstash.io";
-    process.env.KV_REST_API_TOKEN = "AbZeASQgY2MxMDQwMzEtODY0Mi00NzVjLWIwZWMtOWRjNzYyODI3ODA0ODc3ZWEyOTk2ZTA4NDEyZThiZTgyYjNhNmM2ZmFjNDQ=";
     if (req.method === 'GET') {
         try {
             // Fetch characters.json from kv.lrange
