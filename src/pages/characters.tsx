@@ -44,10 +44,10 @@ export default function Characters() {
                 {/* Render the user data here */}
                 {userData && (
                     <div className="text-black">
-                        <p>{userData}</p>
+
                     </div>
                 )}
             </div>
         </main>
-    )
+    );
 }
