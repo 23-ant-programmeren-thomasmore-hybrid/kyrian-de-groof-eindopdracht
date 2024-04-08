@@ -44,7 +44,7 @@ export default function Characters() {
                 {/* Render the user data here */}
                 {userData && (
                     <div>
-                        {/* Render your user data here */}
+                        hallo
                     </div>
                 )}
             </div>
