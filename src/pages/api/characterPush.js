@@ -19,7 +19,7 @@ export default async function handler(req, res) {
             const charString = `${name}~${nextCharID}~${nickname}~${age}~${job}~${forceSensitive}~${species}~${homeWorld}~${weapon}~${affiliation}~${allignment}~${title}~${backstory}`;
 
             charData.lastCharID = nextCharID;
-            await fs.promises.writeFile(CHAR_PATH, JSON.stringify(charData, null, 2));
+            await fs.promises.writeFile(path.join('/tmp', 'charId.json'), JSON.stringify(charData, null, 2));
 
             await kv.lpush("character", charString);
 
