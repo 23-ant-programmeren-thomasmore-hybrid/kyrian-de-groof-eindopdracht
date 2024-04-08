@@ -16,6 +16,9 @@ export default function RootLayout({children,}: Readonly<{ children: React.React
                         <li>
                             <Link href="/creator">creator</Link>
                         </li>
+                        <li>
+                            <Link href="/characters">characters</Link>
+                        </li>
                     </ul>
                 </nav>
             </header>
