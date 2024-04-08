@@ -29,11 +29,11 @@ export default function Characters() {
                 const data = await response.json();
                 setUserData(data);
             } else {
-                console.error('Failed to fetch character data:', response.statusText);
+                console.error('Failed to help character data:', response.statusText);
             }
         }
         catch (error) {
-            console.error('Error ret character data:', error);
+            console.error('Error fetching character data:', error);
         }
     }
 
