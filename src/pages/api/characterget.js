@@ -6,7 +6,7 @@ export default async function handler(req, res) {
         try {
             const jsonData = fs.readFileSync(path.join('/tmp','characters.json'), 'utf8');
             const characters = JSON.parse(jsonData);
-
+            console.log('Characters:', characters);
             if (!characters) {
                 res.status(404).json({ error: 'Characters not found' });
                 console.error('Characters not found');
