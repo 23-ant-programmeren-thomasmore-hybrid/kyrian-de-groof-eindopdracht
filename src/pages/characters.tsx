@@ -10,7 +10,7 @@ export default function Characters() {
     async function load() {
         try {
             const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL || 'http://localhost:3000';
-            const response = await fetch(`${baseUrl}/api/characterfetch`);
+            const response = await fetch(`http://localhost:3000/api/characterfetch`);
             if (response.ok) {
                 const data = await response.json();
                 setUserData(data);
