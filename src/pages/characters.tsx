@@ -33,7 +33,7 @@ export default function Characters() {
             }
         }
         catch (error) {
-            console.error('Error fetching character data:', error);
+            console.error('Error ret character data:', error);
         }
     }
 
