@@ -28,10 +28,13 @@ export default function Characters() {
                 {/* Render the user data here */}
                 {userData && userData.map((character, index) => (
                     <div key={index} className="text-black">
-                        <h2 className="text-2xl font-bold">{character.name}</h2>
-                        <p>age: {character.age}</p>
-                        <p>allignment: {character.allignment}</p>
-                        {/* Add additional character information here */}
+                        <Card>
+                            <Card.Body>
+                                <Card.Title>{character.name}</Card.Title>
+                                <Card.Subtitle>{character.nickname}</Card.Subtitle>
+                                <Card.Text>{character.affiliation}</Card.Text>
+                            </Card.Body>
+                        </Card>
                     </div>
                 ))}
             </div>
