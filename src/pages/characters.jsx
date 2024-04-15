@@ -5,7 +5,6 @@ export default function Characters() {
 
     useEffect(() => {
         load();
-        save();
     }, []);
 
     async function load() {
@@ -22,31 +21,19 @@ export default function Characters() {
         }
     }
 
-    async function save() {
-        try {
-            const response = await fetch('/api/characterget');
-            if (response.ok) {
-                const data = await response.json();
-                setUserData(data);
-            } else {
-                console.error('Failed to help character data:', response.statusText);
-            }
-        }
-        catch (error) {
-            console.error('Error fetching character data:', error);
-        }
-    }
-
     return (
         <main className="flex min-h-screen items-center justify-center bg-black">
             <div className="max-w-md w-full bg-white rounded-lg shadow-md p-8">
                 <h1 className="text-3xl font-bold text-gray-800">Characters</h1>
                 {/* Render the user data here */}
-                {userData && (
-                    <div className="text-black">
-
+                {userData && userData.map((character, index) => (
+                    <div key={index} className="text-black">
+                        <h2 className="text-2xl font-bold">{character.name}</h2>
+                        <p>age: {character.age}</p>
+                        <p>allignment: {character.allignment}</p>
+                        {/* Add additional character information here */}
                     </div>
-                )}
+                ))}
             </div>
         </main>
     );
