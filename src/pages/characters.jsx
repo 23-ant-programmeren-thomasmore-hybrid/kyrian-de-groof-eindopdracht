@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Card from "../components/Card";
 
 export default function Characters() {
     const [userData, setUserData] = useState(null);
@@ -27,15 +28,7 @@ export default function Characters() {
                 <h1 className="text-3xl font-bold text-gray-800">Characters</h1>
                 {/* Render the user data here */}
                 {userData && userData.map((character, index) => (
-                    <div key={index} className="text-black">
-                        <Card>
-                            <Card.Body>
-                                <Card.Title>{character.name}</Card.Title>
-                                <Card.Subtitle>{character.nickname}</Card.Subtitle>
-                                <Card.Text>{character.affiliation}</Card.Text>
-                            </Card.Body>
-                        </Card>
-                    </div>
+                    <Card key={index} character={character} />
                 ))}
             </div>
         </main>
