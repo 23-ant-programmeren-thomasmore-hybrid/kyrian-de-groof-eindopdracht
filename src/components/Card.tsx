@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from "next/link";
 
 // @ts-ignore
 const Card = ({ character }) => {
@@ -7,6 +8,9 @@ const Card = ({ character }) => {
             <h2 className="text-xl font-bold">{character.name}</h2>
             <p className="text-gray-600">{character.nickname}</p>
             <p className="text-gray-700">{character.affiliation}</p>
+            <Link className="right-1" href={'/characters/${character.char_id}'}>
+                <p>More</p>
+            </Link>
         </div>
     );
 };
