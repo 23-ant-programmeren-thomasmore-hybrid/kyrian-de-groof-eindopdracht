@@ -9,7 +9,7 @@ export default function Card({ character }) {
             <h2 className="text-xl font-bold">{character.name}</h2>
             <p className="text-gray-600">{character.nickname}</p>
             <p className="text-gray-700">{character.affiliation}</p>
-            <Link href={`/characters/${character.id}`}>
+            <Link href={{ pathname: `/characters/[id]`, query: { id: character.id, character: JSON.stringify(character) } }}>
                 <a className="button">More</a>
             </Link>
         </div>
