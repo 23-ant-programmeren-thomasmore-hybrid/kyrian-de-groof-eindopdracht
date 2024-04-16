@@ -1,15 +1,26 @@
 //[id].tsx
 import React from "react";
+import { useRouter } from "next/router";
 
 // @ts-ignore
-export default function Character({ character }) {
+export default function Character() {
+    const router = useRouter();
+    const { character } = router.query;
+
+    // Parse character object if available
+    const parsedCharacter = character ? JSON.parse(character) : null;
+
     return (
         <div className="poster">
-<h1>{character.name}</h1>
-            <p>{character.nickname}</p>
-            <p>{character.affiliation}</p>
-            <p>{character.age}</p>
-            <p>{character.allignment}</p>
+            {parsedCharacter && (
+                <>
+                    <h1>{parsedCharacter.name}</h1>
+                    <p>{parsedCharacter.nickname}</p>
+                    <p>{parsedCharacter.affiliation}</p>
+                    <p>{parsedCharacter.age}</p>
+                    <p>{parsedCharacter.allignment}</p>
+                </>
+            )}
         </div>
     );
 }
