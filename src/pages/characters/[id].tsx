@@ -77,13 +77,13 @@ const Character = () => {
             // Create a link element to trigger download
             const link = document.createElement("a");
             link.href = url;
-            link.download = "character_details.pdf";
+            link.download = `character_${parsedCharacter.name}.pdf`;
             link.click();
         }
     };
 
     return (
-        <div className="bg-black min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+        <div className="bg-black min-h-screen py-8 px-4 sm:px-6 lg:px-8 p-1">
             {parsedCharacter && (
                 <div className="max-w-7xl mx-auto overflow-hidden rounded-lg shadow-xl bg-white">
                     <div className="bg-gray-100 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
