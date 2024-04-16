@@ -120,7 +120,7 @@ const Character = () => {
                             </div>
                         </dl>
                     </div>
-                    <PDFDownloadLink document={<CharacterPDF character={characterString} />}
+                    <PDFDownloadLink className="text-black" document={<CharacterPDF character={characterString} />}
                                      fileName={`character_${parsedCharacter.name}.pdf`}>
                         {({ blob, url, loading, error }) => (loading ? "Loading document..." : "Download PDF")}
                     </PDFDownloadLink>
