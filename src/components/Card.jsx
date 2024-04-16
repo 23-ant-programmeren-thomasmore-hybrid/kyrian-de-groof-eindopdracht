@@ -8,8 +8,8 @@ const Card = ({ character }) => {
             <h2 className="text-xl font-bold">{character.name}</h2>
             <p className="text-gray-600">{character.nickname}</p>
             <p className="text-gray-700">{character.affiliation}</p>
-            <Link className="right-1" href={'/characters/'+ character.id}>
-                <p className="button">More</p>
+            <Link href={`/characters/${character.id}`}>
+                <a className="button">More</a>
             </Link>
         </div>
     );
