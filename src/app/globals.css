@@ -52,3 +52,19 @@ ul, li {
   text-align: center;
   color: white; /* Text color */
 }
+
+.button {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #007bff; /* Adjust button background color */
+  color: white; /* Button text color */
+  text-decoration: none;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0056b3; /* Adjust button hover background color */
+}
