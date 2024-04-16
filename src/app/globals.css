@@ -37,3 +37,18 @@ ul, li {
   display: inline-block;
   margin: 5px;
 }
+
+.poster {
+  background-image: url('../../public/poster.jpg');
+  background-size: cover; /* or 'contain' depending on your preference */
+  background-position: center; /* or any other position */
+  height: 100vh; /* Adjust as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.posterContent {
+  text-align: center;
+  color: white; /* Text color */
+}
