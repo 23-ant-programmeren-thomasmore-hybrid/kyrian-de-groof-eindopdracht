@@ -1,5 +1,5 @@
 import React from "react";
-import { PDFViewer, Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
+import { PDFDownloadLink, Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
 import { useRouter } from "next/router";
 
 const styles = StyleSheet.create({
@@ -15,72 +15,51 @@ const styles = StyleSheet.create({
     }
 });
 
+interface CharacterProps {
+    character: any; // Adjust the type based on the actual type of your character object
+}
+
 // Define a custom PDF component to render character details
-const CharacterPDF = ({ character }: { character: any }) => (
-    <Document>
-        <Page size="A4" style={styles.page}>
-            <View style={styles.section}>
-                <Text>Name: {character.name}</Text>
-                <Text>Nickname: {character.nickname}</Text>
-                <Text>Title: {character.title}</Text>
-                <Text>Age: {character.age}</Text>
-                <Text>Affiliation: {character.affiliation}</Text>
-                <Text>Job: {character.job}</Text>
-                <Text>Force Sensitive: {character.forceSensitive ? "Yes" : "No"}</Text>
-                <Text>Species: {character.species}</Text>
-                <Text>Homeworld: {character.homeWorld}</Text>
-                <Text>Weapon: {character.weapon}</Text>
-                <Text>Allignment: {character.allignment}</Text>
-                <Text>Backstory: {character.backstory}</Text>
-            </View>
-        </Page>
-    </Document>
-);
+const CharacterPDF: React.FC<CharacterProps> = ({ character }) => {
+    const parsedCharacter = typeof character === "string" ? JSON.parse(character) : null;
+
+    if (!parsedCharacter) {
+        return null; // or a loading indicator or error message
+    }
+
+    return (
+        <Document>
+            <Page size="A4" style={styles.page}>
+                <View style={styles.section}>
+                    <Text>Name: {parsedCharacter.name}</Text>
+                    <Text>Nickname: {parsedCharacter.nickname}</Text>
+                    <Text>Title: {parsedCharacter.title}</Text>
+                    <Text>Age: {parsedCharacter.age}</Text>
+                    <Text>Affiliation: {parsedCharacter.affiliation}</Text>
+                    <Text>Job: {parsedCharacter.job}</Text>
+                    <Text>Force Sensitive: {parsedCharacter.forceSensitive ? "Yes" : "No"}</Text>
+                    <Text>Species: {parsedCharacter.species}</Text>
+                    <Text>Homeworld: {parsedCharacter.homeWorld}</Text>
+                    <Text>Weapon: {parsedCharacter.weapon}</Text>
+                    <Text>Allignment: {parsedCharacter.allignment}</Text>
+                    <Text>Backstory: {parsedCharacter.backstory}</Text>
+                </View>
+            </Page>
+        </Document>
+    );
+};
 
 const Character = () => {
     const router = useRouter();
-    const character: string | null | undefined = router.query.character as string | null | undefined;
-    const parsedCharacter = character ? JSON.parse(character) : null;
+    const character: string | string[] | undefined = router.query.character;
 
-    const handleDownload = () => {
-        if (parsedCharacter) {
-            const pdf = (
-                <Document>
-                    <Page size="A4" style={styles.page}>
-                        <View style={styles.section}>
-                            <Text>Name: {parsedCharacter.name}</Text>
-                            <Text>Nickname: {parsedCharacter.nickname}</Text>
-                            <Text>Title: {parsedCharacter.title}</Text>
-                            <Text>Age: {parsedCharacter.age}</Text>
-                            <Text>Affiliation: {parsedCharacter.affiliation}</Text>
-                            <Text>Job: {parsedCharacter.job}</Text>
-                            <Text>Force Sensitive: {parsedCharacter.forceSensitive ? "Yes" : "No"}</Text>
-                            <Text>Species: {parsedCharacter.species}</Text>
-                            <Text>Homeworld: {parsedCharacter.homeWorld}</Text>
-                            <Text>Weapon: {parsedCharacter.weapon}</Text>
-                            <Text>Allignment: {parsedCharacter.allignment}</Text>
-                            <Text>Backstory: {parsedCharacter.backstory}</Text>
-                        </View>
-                    </Page>
-                </Document>
-            );
+    if (!character) {
+        return <div>Loading...</div>; // Handle loading state if character is undefined
+    }
 
-            // Render PDF content to string
-            const pdfString = pdf.toString();
-
-            // Create blob with PDF content
-            const blob = new Blob([pdfString], { type: "application/pdf" });
-
-            // Create object URL from blob
-            const url = URL.createObjectURL(blob);
-
-            // Create a link element to trigger download
-            const link = document.createElement("a");
-            link.href = url;
-            link.download = `character_${parsedCharacter.name}.pdf`;
-            link.click();
-        }
-    };
+    // If character is an array, take the first element
+    const characterString = Array.isArray(character) ? character[0] : character;
+    const parsedCharacter = typeof characterString === "string" ? JSON.parse(characterString) : null;
 
     return (
         <div className="bg-black min-h-screen py-8 px-4 sm:px-6 lg:px-8 p-1">
@@ -141,8 +120,10 @@ const Character = () => {
                             </div>
                         </dl>
                     </div>
-                    <button onClick={handleDownload} className="bg-gray-800 text-white p-2 rounded-md">Download PDF
-                    </button>
+                    <PDFDownloadLink document={<CharacterPDF character={characterString} />}
+                                     fileName={`character_${parsedCharacter.name}.pdf`}>
+                        {({ blob, url, loading, error }) => (loading ? "Loading document..." : "Download PDF")}
+                    </PDFDownloadLink>
                 </div>
             )}
         </div>
