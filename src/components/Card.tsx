@@ -9,7 +9,7 @@ const Card = ({ character }) => {
             <p className="text-gray-600">{character.nickname}</p>
             <p className="text-gray-700">{character.affiliation}</p>
             <Link className="right-1" href={'/characters/${character.char_id}'}>
-                <p>More</p>
+                <p className="button">More</p>
             </Link>
         </div>
     );
