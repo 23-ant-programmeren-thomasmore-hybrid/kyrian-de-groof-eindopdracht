@@ -13,13 +13,13 @@ export default function Character() {
     return (
         <div className="poster text-black">
             {parsedCharacter && (
-                <>
+                <div>
                     <h1>{parsedCharacter.name}</h1> <br/>
                     <span>{parsedCharacter.nickname}</span><br/>
                     <span>{parsedCharacter.affiliation}</span><br/>
                     <span>{parsedCharacter.age}</span><br/>
                     <span>{parsedCharacter.allignment}</span>
-                </>
+                </div>
             )}
         </div>
     );
