@@ -69,7 +69,7 @@ export default function Character() {
                             </div>
                         </dl>
                     </div>
-                    <Link href={{pathname: '/PDF/pdf', query: {id: parsedCharacter.id, character:JSON.stringify(parsedCharacter)}}}>
+                    <Link href={{pathname: 'character/PDF/pdf', query: {id: parsedCharacter.id, character:JSON.stringify(parsedCharacter)}}}>
                         <a className="bg-gray-800 text-white p-2 rounded-md">Download PDF</a>
                     </Link>
                 </div>
