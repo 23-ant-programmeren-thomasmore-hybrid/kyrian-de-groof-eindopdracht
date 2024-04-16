@@ -1,5 +1,6 @@
 import React from "react";
 import {useRouter} from "next/router";
+import Link from "next/link";
 
 // @ts-ignore
 export default function Character() {
@@ -68,6 +69,9 @@ export default function Character() {
                             </div>
                         </dl>
                     </div>
+                    <Link href='/PDF/pdf'>
+                        <a className="bg-gray-800 text-white p-2 rounded-md">Download PDF</a>
+                    </Link>
                 </div>
             )}
         </div>
