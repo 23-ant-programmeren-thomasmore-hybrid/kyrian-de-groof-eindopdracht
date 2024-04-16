@@ -1,3 +1,4 @@
+//[id].tsx
 import React from "react";
 
 // @ts-ignore
