@@ -1,14 +1,14 @@
-//[id].tsx
+// [id].tsx
 import React from "react";
 import { useRouter } from "next/router";
 
 // @ts-ignore
 export default function Character() {
     const router = useRouter();
-    const { character } = router.query;
+    const character = router.query.character;
 
     // Parse character object if available
-    const parsedCharacter = character ? JSON.parse(character) : null;
+    const parsedCharacter = Array.isArray(character) ? JSON.parse(character[0]) : JSON.parse(character || "null");
 
     return (
         <div className="poster">
